@@ -1,5 +1,11 @@
+import Balance from "../Components/Balance";
+
 function Homepage() {
-  return <div>Homepage</div>;
+  return (
+    <div>
+      <Balance />
+    </div>
+  );
 }
 
 export default Homepage;
