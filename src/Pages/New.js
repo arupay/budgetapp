@@ -1,5 +1,11 @@
+import NewTransactionForm from "../Components/NewTransactionForm";
+
 function New() {
-  return <div> Here we will log new transcations</div>;
+  return (
+    <div>
+      <NewTransactionForm />
+    </div>
+  );
 }
 
 export default New;
