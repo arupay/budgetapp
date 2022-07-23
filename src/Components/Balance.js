@@ -12,7 +12,7 @@ function Balance() {
       })
       .catch((e) => console.log("Balance call error", e));
   }, []);
-  const sum = transactions.reduce((a, b) => a + b.amount, 0);
+  const sum = transactions.reduce((a, b) => a + parseInt(b.amount), 0);
   return <h1>Bank Account Total: {sum} </h1>;
 }
 
