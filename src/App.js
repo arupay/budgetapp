@@ -9,6 +9,7 @@ import Homepage from "./Pages/Homepage";
 import New from "./Pages/New";
 import ShowPage from "./Pages/ShowPage";
 import Edit from "./Pages/Edit";
+import RootPage from "./Pages/RootPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
+          <Route path="/" element={<RootPage />} />
           <Route path="/transactions" element={<Homepage />} />
           <Route path="*" element={<Error />} />
           <Route path="/transactions/new" element={<New />} />
