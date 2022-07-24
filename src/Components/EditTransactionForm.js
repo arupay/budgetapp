@@ -1,18 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
 const categories = require("../Data/Categories");
 
-function NewTransactionForm() {
+function EditTransactionForm() {
   const [entry, setEntry] = useState({
     date: "",
     name: "",
-    amount: "",
+    amount: 0,
     from: "",
     category: "",
   });
   const navigate = useNavigate();
+  const { idx } = useParams();
+
+  useEffect(() => {
+    axios.get(`${API}/${idx}`).then((res) => {
+      setEntry(res.data);
+    });
+  }, [idx]);
   const handleDateChange = (e) => {
     setEntry({ ...entry, [e.target.id]: e.target.value });
   };
@@ -23,7 +30,7 @@ function NewTransactionForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(API, entry)
+      .put(`${API}/${idx}`, entry)
       .then(() => {
         navigate(`/transactions/`);
       })
@@ -97,4 +104,4 @@ function NewTransactionForm() {
   );
 }
 
-export default NewTransactionForm;
+export default EditTransactionForm;

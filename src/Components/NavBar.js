@@ -4,10 +4,10 @@ function NavBar() {
   return (
     <div>
       <h1>
-        <Link to="/">Budget Genie</Link>
+        <Link to="/transactions">Budget Genie</Link>
       </h1>
       <button>
-        <Link to="/new">new transaction</Link>
+        <Link to="/transactions/new">new transaction</Link>
       </button>
     </div>
   );

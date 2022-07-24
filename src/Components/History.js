@@ -15,7 +15,9 @@ function History() {
       .catch((e) => console.log("History call error", e));
   }, []);
   const dateHandler = (dateString) => {
-    const dateObj = new Date(dateString);
+    const dateObj = new Date(dateString.split("-"));
+    // SPLIT TO SHOW CORRECT DATE AND BYPASS JS 1 DAY OFF Error
+    //More info here https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
     const readableString = dateObj.toDateString();
     return readableString;
   };
@@ -49,7 +51,7 @@ function History() {
                 <td>{e.amount}</td>
                 <td>
                   <button>
-                    <Link to="/new">✏️</Link>
+                    <Link to={`/transactions/${idx}/edit`}>✏️</Link>
                   </button>
                 </td>
               </tr>

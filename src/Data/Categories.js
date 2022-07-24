@@ -4,11 +4,14 @@ module.exports = [
   "Pet",
   "Wages & Income",
   "Groceries",
-  "Invesments",
+  "Investments",
   "Entertainment",
   "Rent & Mortgage",
   "Health & Wellness",
   "Utilities",
   "Travel & Leisure",
+  "Transportation",
   "Other",
 ];
+
+//TODO: Update to {category: category, color: hex code} obj to create visual graph
