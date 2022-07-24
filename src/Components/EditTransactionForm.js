@@ -32,7 +32,7 @@ function EditTransactionForm() {
     axios
       .put(`${API}/${idx}`, entry)
       .then(() => {
-        navigate(`/transactions/`);
+        navigate(`/transactions/${idx}`);
       })
       .catch((e) => {
         console.warn(e);

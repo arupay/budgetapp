@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const API = process.env.REACT_APP_API_URL;
 
 function History() {
   const [history, setHistory] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(API)
@@ -21,14 +22,6 @@ function History() {
     const readableString = dateObj.toDateString();
     return readableString;
   };
-  // const deleteHandler = (index) => {
-  //   axios
-  //     .delete(`${API}/${index}`)
-  //     .then(() => {
-  //       navigate(`/`);
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
   return (
     <div>
       <table>
@@ -50,8 +43,8 @@ function History() {
                 </td>
                 <td>{e.amount}</td>
                 <td>
-                  <button>
-                    <Link to={`/transactions/${idx}/edit`}>✏️</Link>
+                  <button onClick={() => navigate(`/transactions/${idx}/edit`)}>
+                    ✏️
                   </button>
                 </td>
               </tr>

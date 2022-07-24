@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
 
@@ -19,9 +19,43 @@ function Transaction() {
       .catch((e) => {
         console.log(e);
       });
-  });
+  }, [idx]);
+  const handleDelete = (idx) => {
+    axios
+      .delete(`${API}/${idx}`)
+      .then(() => {
+        navigate(`/transactions`);
+      })
+      .catch((e) => console.log(e));
+  };
+  const dateHandler = (dateString) => {
+    const dateObj = new Date(dateString.split("-"));
+    const readableString = dateObj.toDateString();
+    return readableString;
+  };
 
-  return <div></div>;
+  return (
+    <section className="data">
+      {item.date ? (
+        <article>
+          <h4>Date: {dateHandler(item.date)}</h4>
+          <h4>Name: {item.name}</h4>
+          <h4>Amount: {item.amount}</h4>
+          <h4>From: {item.from}</h4>
+          <h4>Category: {item.category}</h4>
+          <footer>
+            <button onClick={() => navigate("/transactions")}>🔙</button>{" "}
+            <button onClick={() => navigate(`/transactions/${idx}/edit`)}>
+              ✏️
+            </button>
+            <button onClick={() => handleDelete(idx)}>❌</button>
+          </footer>
+        </article>
+      ) : (
+        "Loading....."
+      )}
+    </section>
+  );
 }
 
 export default Transaction;
