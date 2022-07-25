@@ -36,7 +36,7 @@ function Transaction() {
 
   return (
     <section className="data">
-      {item.date ? (
+      {item.date && (
         <article>
           <h4>Date: {dateHandler(item.date)}</h4>
           <h4>Name: {item.name}</h4>
@@ -51,8 +51,6 @@ function Transaction() {
             <button onClick={() => handleDelete(idx)}>❌</button>
           </footer>
         </article>
-      ) : (
-        "Loading....."
       )}
     </section>
   );

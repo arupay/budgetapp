@@ -12,6 +12,7 @@ function NewTransactionForm() {
     from: "",
     category: "",
   });
+
   const navigate = useNavigate();
   const handleDateChange = (e) => {
     setEntry({ ...entry, [e.target.id]: e.target.value });
@@ -20,6 +21,7 @@ function NewTransactionForm() {
   const handleTextChange = (e) => {
     setEntry({ ...entry, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -28,12 +30,35 @@ function NewTransactionForm() {
         navigate(`/transactions/`);
       })
       .catch((e) => {
-        console.warn(e);
+        console.log(e);
       });
   };
   return (
     <section>
       <form onSubmit={handleSubmit}>
+        {/* <fieldset>
+          <legend> Is this entry an income or expense?</legend>
+          <div>
+            <input
+              type="radio"
+              id="income"
+              name="income"
+              value="income"
+              onChange={handleDateChange}
+            />
+            <label htmlFor="income">Income</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="expense"
+              name="expense"
+              value="income"
+              onChange={handleDateChange}
+            />
+            <label htmlFor="expense">Expense</label>
+          </div>
+        </fieldset> */}
         <label htmlFor="date">Date</label>
         <input
           type="date"
