@@ -6,6 +6,7 @@ const categories = require("../Data/Categories");
 
 function NewTransactionForm() {
   const [entry, setEntry] = useState({
+    type: "",
     date: "",
     name: "",
     amount: "",
@@ -14,18 +15,29 @@ function NewTransactionForm() {
   });
 
   const navigate = useNavigate();
-  const handleDateChange = (e) => {
-    setEntry({ ...entry, [e.target.id]: e.target.value });
+
+  const validateValue = (obj) => {
+    const num = Number(obj.amount);
+    if (
+      (num > 0 && obj.type === "income") ||
+      (num < 0 && obj.type === "expense")
+    ) {
+      return obj;
+    } else if (num > 0 && obj.type === "expense") {
+      return { ...obj, amount: -num };
+    } else {
+      return { ...obj, amount: Math.abs(num) };
+    }
   };
 
-  const handleTextChange = (e) => {
+  const handleChange = (e) => {
     setEntry({ ...entry, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(API, entry)
+      .post(API, validateValue(entry))
       .then(() => {
         navigate(`/transactions/`);
       })
@@ -36,36 +48,37 @@ function NewTransactionForm() {
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        {/* <fieldset>
+        <fieldset>
           <legend> Is this entry an income or expense?</legend>
           <div>
             <input
               type="radio"
-              id="income"
-              name="income"
+              id="type"
+              name="type"
               value="income"
-              onChange={handleDateChange}
+              onChange={handleChange}
+              required
             />
             <label htmlFor="income">Income</label>
           </div>
           <div>
             <input
               type="radio"
-              id="expense"
-              name="expense"
-              value="income"
-              onChange={handleDateChange}
+              id="type"
+              name="type"
+              value="expense"
+              onChange={handleChange}
             />
             <label htmlFor="expense">Expense</label>
           </div>
-        </fieldset> */}
+        </fieldset>
         <label htmlFor="date">Date</label>
         <input
           type="date"
           id="date"
           name="date"
           value={entry.date}
-          onChange={handleDateChange}
+          onChange={handleChange}
           required
         ></input>
         <br />
@@ -75,7 +88,7 @@ function NewTransactionForm() {
           id="name"
           name="name"
           value={entry.name}
-          onChange={handleTextChange}
+          onChange={handleChange}
           required
         ></input>
         <br />
@@ -85,7 +98,7 @@ function NewTransactionForm() {
           id="amount"
           name="amount"
           value={entry.amount}
-          onChange={handleTextChange}
+          onChange={handleChange}
           required
         ></input>
         <br />
@@ -95,7 +108,7 @@ function NewTransactionForm() {
           id="from"
           name="from"
           value={entry.from}
-          onChange={handleTextChange}
+          onChange={handleChange}
           required
         ></input>
         <br />
@@ -104,16 +117,29 @@ function NewTransactionForm() {
           value={entry.category}
           id="category"
           name="category"
-          onChange={handleTextChange}
+          onChange={handleChange}
+          required
         >
           <option value={null}></option>
-          {categories.map((cat, idx) => {
-            return (
-              <option key={idx} value={cat.name}>
-                {cat.name}
-              </option>
-            );
-          })}
+          {entry.type === "income"
+            ? categories
+                .filter((e) => e.type === "income")
+                .map((cat, idx) => {
+                  return (
+                    <option key={idx} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  );
+                })
+            : categories
+                .filter((e) => e.type === "expense")
+                .map((cat, idx) => {
+                  return (
+                    <option key={idx} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  );
+                })}
         </select>
         <br />
         <input type="submit" />

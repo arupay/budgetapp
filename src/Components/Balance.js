@@ -25,10 +25,10 @@ function Balance() {
     }
   };
   return (
-    <h1>
-      Bank Account Total:
-      <span style={{ color: balanceColor(sum) }}>{sum}</span>
-    </h1>
+    <h2>
+      Bank Account Total (USD): $
+      <span style={{ color: balanceColor(sum) }}> {sum.toFixed(2)} </span>
+    </h2>
   );
 }
 

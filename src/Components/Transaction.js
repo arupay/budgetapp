@@ -39,6 +39,7 @@ function Transaction() {
       {item.date && (
         <article>
           <h4>Date: {dateHandler(item.date)}</h4>
+          <h4>Type: {item.type.toUpperCase()}</h4>
           <h4>Name: {item.name}</h4>
           <h4>Amount: {item.amount}</h4>
           <h4>From: {item.from}</h4>
