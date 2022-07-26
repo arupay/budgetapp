@@ -109,8 +109,8 @@ function NewTransactionForm() {
           <option value={null}></option>
           {categories.map((cat, idx) => {
             return (
-              <option key={idx} value={cat}>
-                {cat}
+              <option key={idx} value={cat.name}>
+                {cat.name}
               </option>
             );
           })}

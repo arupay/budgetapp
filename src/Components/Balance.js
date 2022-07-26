@@ -12,8 +12,24 @@ function Balance() {
       })
       .catch((e) => console.log("Balance call error", e));
   }, []);
+
   const sum = transactions.reduce((a, b) => a + parseInt(b.amount), 0);
-  return <h1>Bank Account Total: {sum} </h1>;
+  const balanceColor = (value) => {
+    switch (true) {
+      case value < 0:
+        return "red";
+      case value > 1000:
+        return "green";
+      default:
+        return "gray";
+    }
+  };
+  return (
+    <h1>
+      Bank Account Total:
+      <span style={{ color: balanceColor(sum) }}>{sum}</span>
+    </h1>
+  );
 }
 
 export default Balance;

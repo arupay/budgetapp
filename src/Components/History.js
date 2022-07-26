@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./History.css";
 const API = process.env.REACT_APP_API_URL;
 
 function History() {
@@ -22,6 +23,10 @@ function History() {
     const readableString = dateObj.toDateString();
     return readableString;
   };
+  const transColor = (val) => {
+    return val > 0 ? "green" : "red";
+  };
+
   return (
     <div>
       <table>
@@ -36,7 +41,7 @@ function History() {
         <tbody>
           {history.map((e, idx) => {
             return (
-              <tr key={idx}>
+              <tr key={idx} className={transColor(e.amount)}>
                 <td>{dateHandler(e.date)}</td>
                 <td>
                   <Link to={`/transactions/${idx}`}>{e.name}</Link>
