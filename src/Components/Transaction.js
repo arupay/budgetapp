@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./Transaction.css";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
 
@@ -35,25 +36,41 @@ function Transaction() {
   };
 
   return (
-    <section className="data">
-      {item.date && (
-        <article>
-          <h4>Date: {dateHandler(item.date)}</h4>
-          <h4>Type: {item.type.toUpperCase()}</h4>
-          <h4>Name: {item.name}</h4>
-          <h4>Amount: {item.amount}</h4>
-          <h4>From: {item.from}</h4>
-          <h4>Category: {item.category}</h4>
-          <footer>
-            <button onClick={() => navigate("/transactions")}>🔙</button>{" "}
-            <button onClick={() => navigate(`/transactions/${idx}/edit`)}>
-              ✏️
-            </button>
-            <button onClick={() => handleDelete(idx)}>❌</button>
-          </footer>
-        </article>
-      )}
-    </section>
+    <div>
+      <div className="trans-container">
+        <div className="trans-data">
+          <section className="mission">
+            {item.date && (
+              <article>
+                <div>
+                  <strong>Date:</strong> {dateHandler(item.date)}
+                </div>
+                <div>
+                  <strong>Type:</strong> {item.type.toUpperCase()}
+                </div>
+                <div>
+                  <strong>Name:</strong> {item.name}
+                </div>
+                <div>
+                  <strong>Amount:</strong> {item.amount}
+                </div>
+                <div>
+                  <strong>From:</strong> {item.from}
+                </div>
+                <div>
+                  <strong>Category:</strong> {item.category}
+                </div>
+              </article>
+            )}
+          </section>
+          <button onClick={() => navigate("/transactions")}>🔙</button>{" "}
+          <button onClick={() => navigate(`/transactions/${idx}/edit`)}>
+            ✏️
+          </button>
+          <button onClick={() => handleDelete(idx)}>❌</button>
+        </div>
+      </div>
+    </div>
   );
 }
 

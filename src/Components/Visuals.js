@@ -48,7 +48,7 @@ export default function Visuals() {
         className="btn btn-info btn-md text-center"
         onClick={clickHandler}
       >
-        {toggle ? "Show Income" : "Show Expenses"}
+        {toggle ? "Click To Show Income" : "Click To Show Expenses"}
       </button>
       <Container className="col-md-4 pt-5">
         <section>

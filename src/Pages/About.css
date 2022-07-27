@@ -1,0 +1,27 @@
+.about-container {
+    padding: 50px;
+ }
+ .profile {
+color:white;
+margin: 0 auto;
+ background-color: #23272A;
+ padding: 30px;
+ border-radius: 10px;
+ position: relative;
+}
+
+.mission {
+text-align: center;
+padding: 5px;
+}
+
+
+.pic {
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+margin: 0 auto;
+position: absolute;
+right: 15px;
+bottom: 15px;
+    }

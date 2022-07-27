@@ -1,0 +1,17 @@
+.trans-container {
+    padding: 50px;
+ }
+ .trans-data {
+color:white;
+max-width: 600px;
+margin: 0 auto;
+ background-color: #16147b;
+ padding: 30px;
+ border-radius: 10px;
+ position: relative;
+}
+
+.mission {
+text-align: center;
+padding: 5px;
+}

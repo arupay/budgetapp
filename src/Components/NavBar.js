@@ -1,4 +1,3 @@
-import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import Balance from "./Balance";
