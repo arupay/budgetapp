@@ -11,8 +11,7 @@ const categories = require("../Data/Categories");
 
 export default function Visuals() {
   const [active, setActive] = useState(null);
-  const [active2, setActive2] = useState(null);
-  // const [toggle, setToggle] = useState({ x: true, y: "income" });
+  const [toggle, setToggle] = useState(true);
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -36,24 +35,27 @@ export default function Visuals() {
   const expenses = updatedCategories.filter((cat) => cat.type === "expense");
   const income = updatedCategories.filter((cat) => cat.type === "income");
 
-  const width = 300;
+  const width = 380;
   const half = width / 2;
-  // const clickHandler = () => {
-  //   setToggle({ x: false, y: "expenses" });
-  // };
+  const clickHandler = () => {
+    setToggle(!toggle);
+  };
 
   return (
     <div className="row">
-      <button type="button" className="btn btn-info btn-sm text-center">
-        Show Expenses
+      <button
+        type="button"
+        className="btn btn-info btn-md text-center"
+        onClick={clickHandler}
+      >
+        {toggle ? "Show Income" : "Show Expenses"}
       </button>
       <Container className="col-md-4 pt-5">
         <section>
           <svg width={width} height={width}>
             <Group top={half} left={half}>
               <Pie
-                // data={updatedCategories.filter((e) => (e.type = "expense"))}
-                data={expenses}
+                data={toggle ? expenses : income}
                 pieValue={(data) => data.value}
                 outerRadius={half}
                 innerRadius={({ data }) => {
@@ -95,74 +97,15 @@ export default function Visuals() {
               ) : (
                 <>
                   <Text textAnchor="middle" fontSize={30} dy={-20}>
-                    {`$${expenses.reduce((acc, ele) => acc + ele.value, 0)}`}
+                    {toggle
+                      ? `$${expenses.reduce((acc, ele) => acc + ele.value, 0)}`
+                      : `$${income.reduce((acc, ele) => acc + ele.value, 0)}`}
                   </Text>
-                  <Text
-                    textAnchor="middle"
-                    fontSize={20}
-                    dy={20}
-                  >{`Total Expenses:  ${expenses.length} Sources`}</Text>
-                </>
-              )}
-            </Group>
-          </svg>
-        </section>
-      </Container>
-      <Container className="col-md-4 pt-5">
-        <section>
-          <svg width={width} height={width}>
-            <Group top={half} left={half}>
-              <Pie
-                // data={updatedCategories.filter((e) => (e.type = "expense"))}
-                data={income}
-                pieValue={(data) => data.value}
-                outerRadius={half}
-                innerRadius={({ data }) => {
-                  // console.log({ data }); ISOLATED DATA , set up ternary to conditionally render w/ hover effect
-                  const size = active2 && active2.name === data.name ? 25 : 15;
-                  return half - size;
-                }}
-                padAngle={0.01}
-              >
-                {(pie) => {
-                  return pie.arcs.map((arc) => {
-                    return (
-                      <g
-                        key={arc.data.name}
-                        onMouseEnter={() => setActive2(arc.data)}
-                        onMouseLeave={() => setActive2(null)}
-                      >
-                        <path d={pie.path(arc)} fill={arc.data.color}></path>
-                      </g>
-                    );
-                  });
-                  //consoled logged arc to see an object, each element in data
-                }}
-              </Pie>
-              {active2 ? (
-                <>
-                  <Text textAnchor="middle" fontSize={30} dy={-20} fill="#000">
-                    {`$${active2.value}`}
+                  <Text textAnchor="middle" fontSize={20} dy={20}>
+                    {toggle
+                      ? `Total Expenses:  ${expenses.length} Sources`
+                      : `Total Income:  ${income.length} Sources`}
                   </Text>
-                  <Text
-                    textAnchor="middle"
-                    fill={active2.color}
-                    fontSize={20}
-                    dy={20}
-                  >
-                    {active2.name}
-                  </Text>
-                </>
-              ) : (
-                <>
-                  <Text textAnchor="middle" fontSize={30} dy={-20}>
-                    {`$${income.reduce((acc, ele) => acc + ele.value, 0)}`}
-                  </Text>
-                  <Text
-                    textAnchor="middle"
-                    fontSize={20}
-                    dy={20}
-                  >{`Total Income:  ${income.length} Sources`}</Text>
                 </>
               )}
             </Group>

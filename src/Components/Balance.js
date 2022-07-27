@@ -17,17 +17,19 @@ function Balance() {
   const balanceColor = (value) => {
     switch (true) {
       case value < 0:
-        return "red";
+        return " red";
       case value > 1000:
         return "green";
       default:
-        return "gray";
+        return "white";
     }
   };
   return (
     <div>
       Balance (USD): $
-      <span style={{ color: balanceColor(sum) }}> {sum.toFixed(2)} </span>
+      <span style={{ color: balanceColor(sum), fontWeight: "bold" }}>
+        {sum.toFixed(2)}
+      </span>
     </div>
   );
 }

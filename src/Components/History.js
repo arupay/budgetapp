@@ -26,13 +26,13 @@ function History() {
     return readableString;
   };
   const transColor = (val) => {
-    return val > 0 ? "fw-bold green" : "fw-bold red";
+    return val > 0 ? " green" : " red";
   };
 
   return (
     <div className="container my-5">
       <table className="table align-middle mb-0 bg-white">
-        <thead className="bg-light">
+        <thead>
           <tr>
             <th></th>
             <th></th>
