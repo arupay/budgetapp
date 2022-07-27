@@ -89,7 +89,7 @@ export default function Visuals() {
                 textAnchor="middle"
                 fontSize={20}
                 dy={20}
-              >{`From ${expenses.length} Sources`}</Text>
+              >{`Total Expenses:  ${expenses.length} Sources`}</Text>
             </>
           )}
         </Group>
