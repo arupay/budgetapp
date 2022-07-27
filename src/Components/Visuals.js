@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 const API = process.env.REACT_APP_API_URL;
+s;
 
 const categories = require("../Data/Categories");
 
@@ -35,7 +36,7 @@ export default function Visuals() {
   const expenses = updatedCategories.filter((cat) => cat.type === "expense");
   const income = updatedCategories.filter((cat) => cat.type === "income");
 
-  const width = 380;
+  const width = 400;
   const half = width / 2;
   const clickHandler = () => {
     setToggle(!toggle);
