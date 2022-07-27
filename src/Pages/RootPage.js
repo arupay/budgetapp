@@ -1,5 +1,5 @@
 function RootPage() {
-  return <div>WELCOME TO THE BUDGET GENIE</div>;
+  return <h1>WELCOME TO THE BUDGET GENIE</h1>;
 }
 
 export default RootPage;
