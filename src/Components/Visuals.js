@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 const API = process.env.REACT_APP_API_URL;
-s;
 
 const categories = require("../Data/Categories");
 
