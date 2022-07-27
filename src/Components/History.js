@@ -18,13 +18,13 @@ function History() {
       })
       .catch((e) => console.log("History call error", e));
   }, []);
-  const dateHandler = (dateString) => {
-    const dateObj = new Date(dateString.split("-"));
-    // SPLIT TO SHOW CORRECT DATE AND BYPASS JS 1 DAY OFF Error
-    //More info here https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
-    const readableString = dateObj.toDateString();
-    return readableString;
-  };
+  // const dateHandler = (dateString) => {
+  //   const dateObj = new Date(dateString.split("-"));
+  //   // SPLIT TO SHOW CORRECT DATE AND BYPASS JS 1 DAY OFF Error
+  //   //More info here https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
+  //   const readableString = dateObj.toDateString();
+  //   return readableString;
+  // };
   const transColor = (val) => {
     return val > 0 ? " green" : " red";
   };
@@ -44,7 +44,7 @@ function History() {
           {history.map((e, idx) => {
             return (
               <tr key={idx}>
-                <td>{dateHandler(e.date)}</td>
+                <td>{e.date}</td>
                 <td>
                   <Link className={`links`} to={`/transactions/${idx}`}>
                     {e.name}

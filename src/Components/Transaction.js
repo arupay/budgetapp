@@ -29,11 +29,11 @@ function Transaction() {
       })
       .catch((e) => console.log(e));
   };
-  const dateHandler = (dateString) => {
-    const dateObj = new Date(dateString.split("-"));
-    const readableString = dateObj.toDateString();
-    return readableString;
-  };
+  // const dateHandler = (dateString) => {
+  //   const dateObj = new Date(dateString.split("-"));
+  //   const readableString = dateObj.toDateString();
+  //   return readableString;
+  // };
 
   return (
     <div>
@@ -43,7 +43,7 @@ function Transaction() {
             {item.date && (
               <article>
                 <div>
-                  <strong>Date:</strong> {dateHandler(item.date)}
+                  <strong>Date:</strong> {item.date}
                 </div>
                 <div>
                   <strong>Type:</strong> {item.type.toUpperCase()}
