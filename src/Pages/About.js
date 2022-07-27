@@ -1,6 +1,4 @@
-import { Button, Card, Col } from "react-bootstrap";
 import "../Pages/About.css";
-import { Link } from "react-router-dom";
 
 function About() {
   return (

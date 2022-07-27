@@ -4,9 +4,10 @@
  .profile {
 color:white;
 margin: 0 auto;
- background-color: #23272A;
+ background-color: #090d3d;
  padding: 30px;
  border-radius: 10px;
+ max-width: 600px;
  position: relative;
 }
 
