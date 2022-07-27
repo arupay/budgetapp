@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Form, Button } from "react-bootstrap";
 const API = process.env.REACT_APP_API_URL;
 const categories = require("../Data/Categories");
 
@@ -50,105 +52,114 @@ function EditTransactionForm() {
       });
   };
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        {console.log(entry)}
-        <fieldset>
-          <legend> Is this entry an income or expense?</legend>
-          <div>
-            <input
-              type="radio"
-              id="type"
-              name="type"
-              value="income"
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="income">Income</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="type"
-              name="type"
-              value="expense"
-              onChange={handleChange}
-            />
-            <label htmlFor="expense">Expense</label>
-          </div>
-        </fieldset>
-        <label htmlFor="date">Date</label>
-        <input
-          type="date"
-          id="date"
-          name="date"
-          value={entry.date}
-          onChange={handleChange}
-          required
-        ></input>
-        <br />
-        <label htmlFor="date">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={entry.name}
-          onChange={handleChange}
-          required
-        ></input>
-        <br />
-        <label htmlFor="amount">Amount</label>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          value={entry.amount}
-          onChange={handleChange}
-          required
-        ></input>
-        <br />
-        <label htmlFor="from">From</label>
-        <input
-          type="text"
-          id="from"
-          name="from"
-          value={entry.from}
-          onChange={handleChange}
-          required
-        ></input>
-        <br />
-        <label htmlFor="category">Category</label>
-        <select
-          value={entry.category}
-          id="category"
-          name="category"
-          onChange={handleChange}
-        >
-          <option value={null}></option>
-          {entry.type === "income"
-            ? categories
-                .filter((e) => e.type === "income")
-                .map((cat, idx) => {
-                  return (
-                    <option key={idx} value={cat.name}>
-                      {cat.name}
-                    </option>
-                  );
-                })
-            : categories
-                .filter((e) => e.type === "expense")
-                .map((cat, idx) => {
-                  return (
-                    <option key={idx} value={cat.name}>
-                      {cat.name}
-                    </option>
-                  );
-                })}
-        </select>
-        <br />
-        <input type="submit" />
-      </form>
-    </section>
+    <div style={{ display: "block", padding: 30 }}>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="type">
+          <Form.Label> Is this entry an income or expense?</Form.Label>
+          <Form.Check
+            className="form-check-input"
+            type="radio"
+            id="type"
+            name="type"
+            value="income"
+            onChange={handleChange}
+            label="Income"
+            required
+          />
+          <Form.Check
+            type="radio"
+            id="type"
+            name="type"
+            value="expense"
+            onChange={handleChange}
+            label="Expense"
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Date</Form.Label>
+          <Form.Control
+            type="date"
+            id="date"
+            name="date"
+            value={entry.date}
+            onChange={handleChange}
+            placeholder="DateRange"
+            required
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            id="name"
+            name="name"
+            value={entry.name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Amount</Form.Label>
+          <Form.Control
+            type="number"
+            id="amount"
+            name="amount"
+            value={entry.amount}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>From</Form.Label>
+          <Form.Control
+            type="text"
+            id="from"
+            name="from"
+            value={entry.from}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Select A Category</Form.Label>
+          <Form.Control
+            as="select"
+            value={entry.category}
+            id="category"
+            name="category"
+            onChange={handleChange}
+            required
+          >
+            <option value={null}></option>
+            {entry.type === "income"
+              ? categories
+                  .filter((e) => e.type === "income")
+                  .map((cat, idx) => {
+                    return (
+                      <option key={idx} value={cat.name}>
+                        {cat.name}
+                      </option>
+                    );
+                  })
+              : categories
+                  .filter((e) => e.type === "expense")
+                  .map((cat, idx) => {
+                    return (
+                      <option key={idx} value={cat.name}>
+                        {cat.name}
+                      </option>
+                    );
+                  })}
+          </Form.Control>
+        </Form.Group>
+        <Button variant="outline-success" type="submit" className="mt-3">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }
 
