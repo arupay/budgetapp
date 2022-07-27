@@ -41,12 +41,12 @@ function History() {
         <tbody>
           {history.map((e, idx) => {
             return (
-              <tr key={idx} className={transColor(e.amount)}>
+              <tr key={idx}>
                 <td>{dateHandler(e.date)}</td>
                 <td>
                   <Link to={`/transactions/${idx}`}>{e.name}</Link>
                 </td>
-                <td>{e.amount}</td>
+                <td className={transColor(e.amount)}>{e.amount}</td>
                 <td>
                   <button onClick={() => navigate(`/transactions/${idx}/edit`)}>
                     ✏️

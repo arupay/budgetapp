@@ -30,6 +30,7 @@ export default function Visuals() {
     return { ...cat, value: totalByCategory(cat.name) };
   });
   const expenses = updatedCategories.filter((cat) => cat.type === "expense");
+  // const income = updatedCategories.filter((cat) => cat.type === "income");
 
   const width = 400;
   const half = width / 2;
@@ -45,7 +46,7 @@ export default function Visuals() {
             outerRadius={half}
             innerRadius={({ data }) => {
               // console.log({ data }); ISOLATED DATA , set up ternary to conditionally render w/ hover effect
-              const size = active && active.name === data.name ? 25 : 12.5;
+              const size = active && active.name === data.name ? 25 : 15;
               return half - size;
             }}
             padAngle={0.01}
@@ -67,7 +68,7 @@ export default function Visuals() {
           </Pie>
           {active ? (
             <>
-              <Text textAnchor="middle" fontSize={40} dy={-20}>
+              <Text textAnchor="middle" fontSize={40} dy={-20} fill="#000">
                 {`$${active.value}`}
               </Text>
               <Text

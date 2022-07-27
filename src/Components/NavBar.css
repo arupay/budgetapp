@@ -1,5 +1,7 @@
-.nav {
-    display: flex;
-    
+.bg-myBlue {
+    background-color: blue;
 }
 
+.content {
+    padding: 12px;
+}

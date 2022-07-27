@@ -1,9 +1,9 @@
-.red td {
-    background-color: rgb(248, 79, 79);
-    color: white;
+.red  {
+    color: rgb(248, 79, 79);
+
 }
 
-.green td {
-    background-color: rgb(114, 227, 133);
-    color: white;
+.green  {
+    color: rgb(114, 227, 133);
+
 }
