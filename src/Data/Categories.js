@@ -8,8 +8,8 @@ module.exports = [
   { name: "Utilities", color: "#377B2B", type: "expense" },
   { name: "Transportation", color: "#AA336A", type: "expense" },
   { name: "Misc Expense", color: "#000000", type: "expense" },
-  { name: "Wages & Income", color: "#90EE90", type: "income" },
-  { name: "Investments", color: "#097770", type: "income" },
+  { name: "Wages & Income", color: "#097770", type: "income" },
+  { name: "Investments", color: "#90EE90", type: "income" },
   { name: "Gifts", color: "#FFC300", type: "income" },
   { name: "Misc Income", color: "#a9c0a6", type: "income" },
 ];
