@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./History.css";
+import "bootstrap/dist/css/bootstrap.css";
+
 const API = process.env.REACT_APP_API_URL;
 
 function History() {
@@ -24,13 +26,13 @@ function History() {
     return readableString;
   };
   const transColor = (val) => {
-    return val > 0 ? "green" : "red";
+    return val > 0 ? "fw-bold green" : "fw-bold red";
   };
 
   return (
-    <div>
-      <table>
-        <thead>
+    <div className="container my-5">
+      <table className="table align-middle mb-0 bg-white">
+        <thead className="bg-light">
           <tr>
             <th></th>
             <th></th>
@@ -44,12 +46,18 @@ function History() {
               <tr key={idx}>
                 <td>{dateHandler(e.date)}</td>
                 <td>
-                  <Link to={`/transactions/${idx}`}>{e.name}</Link>
+                  <Link className={`links`} to={`/transactions/${idx}`}>
+                    {e.name}
+                  </Link>
                 </td>
                 <td className={transColor(e.amount)}>{e.amount}</td>
                 <td>
-                  <button onClick={() => navigate(`/transactions/${idx}/edit`)}>
-                    ✏️
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => navigate(`/transactions/${idx}/edit`)}
+                  >
+                    Edit
                   </button>
                 </td>
               </tr>
