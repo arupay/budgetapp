@@ -1,4 +1,3 @@
-import Balance from "../Components/Balance";
 import History from "../Components/History";
 import Visuals from "../Components/Visuals";
 
