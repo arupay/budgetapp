@@ -30,7 +30,6 @@ export default function Visuals() {
     return { ...cat, value: totalByCategory(cat.name) };
   });
   const expenses = updatedCategories.filter((cat) => cat.type === "expense");
-  const income = updatedCategories.filter((cat) => cat.type === "income");
 
   const width = 400;
   const half = width / 2;
