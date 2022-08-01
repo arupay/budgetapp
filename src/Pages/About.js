@@ -6,13 +6,13 @@ function About() {
       <div className="about-container">
         <div className="profile">
           <div className="mission">
-            Hi there, my name is Augusto Rupay and I'm a software developer
+            Hello there, my name is Augusto Rupay and I'm a software developer
             currently enrolled in Pursuit NYC. Budget Genie is a full stack
-            passion project inspired by TrueBill, and other budget management
-            apps alike. It makes use of JS, React, Express, Postman, Bootstrap,
-            Visx, & Heroku. Budget Genie is an educational project -- any
-            likeness to any other genies are strictly coincidential and
-            unintentional so don't sue me.
+            passion project that draws inspiration from TrueBill, and other
+            budget management apps. I created this app using JS, React, Express,
+            Postman, Bootstrap, Visx, & Heroku. Features to come include a
+            search function and date parameters for visuals. Reach out to me on
+            LinkedIn.
           </div>
           <img
             className="pic"

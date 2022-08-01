@@ -4,8 +4,6 @@ import "./Transaction.css";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
 
-//TO:DO How to display this data so it is easier to consume for end user?
-
 function Transaction() {
   const [item, setItem] = useState([]);
   let { idx } = useParams();
